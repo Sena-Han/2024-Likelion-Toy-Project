@@ -18,9 +18,15 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            position: relative; /* 홈 버튼을 절대 위치로 배치하기 위해 추가 */
         }
         h1 {
             text-align: center;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
         .user-info, .mypage-info {
             margin-top: 30px;
@@ -38,7 +44,7 @@
         form .form-fields p {
             margin-bottom: 10px;
         }
-        form button {
+        .submit-button {
             background-color: rgb(131, 166, 204);
             color: #fff;
             border: none;
@@ -48,7 +54,7 @@
             font-size: 16px;
             margin-top: 20px;
         }
-        form button:hover {
+        .submit-button:hover {
             background-color: #0056b3;
         }
         input[type="text"],
@@ -69,6 +75,11 @@
 </head>
 <body>
     <div class="container">
+        <div class="home-button">
+            <form action="{% url 'home' %}">
+                <button type="submit">Home</button>
+            </form>
+        </div>
         <h1>My Page</h1>
         <div class="user-info">
             <p><strong>Username:</strong> {{ user.username }}</p>
@@ -90,7 +101,7 @@
                 <div class="form-fields">
                     {{ form.as_p }}
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit" class="submit-button">Submit</button>
             </form>
         {% endif %}
     </div>

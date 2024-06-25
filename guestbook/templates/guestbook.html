@@ -18,6 +18,7 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            position: relative; /* 홈 버튼을 절대 위치로 배치하기 위해 추가 */
         }
         h1 {
             text-align: center;
@@ -84,10 +85,20 @@
         .delete-button:hover {
             background-color: #c82333;
         }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="home-button">
+            <form action="{% url 'home' %}">
+                <button type="submit">Home</button>
+            </form>
+        </div>
         <h1>Guest Book</h1>
         <div class="write-button">
             <a href="{% url 'guestbookpost' %}">
@@ -99,7 +110,7 @@
                 <div class="guestbook-entry">
                     <h3 class="username">{{ guestBook.author.username }}</h3>
                     <p class="message">{{ guestBook.message }}</p>
-                    <p class="upload-time">Upload time: {{ guestBook.write_time|date:"Y-m-d H:i:s" }}</p>
+                    <p class="upload-time">{{ guestBook.write_time|date:"Y-m-d H:i:s" }}</p>
                     <form action="{% url 'guestbookdelete' guestBook.pk %}" method="post" style="display:inline;">
                         {% csrf_token %}
                         <button type="submit" class="delete-button">Delete</button>
