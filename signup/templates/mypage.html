@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .user-info, .mypage-info {
+            margin-top: 30px;
+        }
+        .user-info p, .mypage-info p {
+            margin-bottom: 10px;
+        }
+        form {
+            text-align: center;
+        }
+        form .form-fields {
+            margin-top: 20px;
+            text-align: left;
+        }
+        form .form-fields p {
+            margin-bottom: 10px;
+        }
+        form button {
+            background-color: rgb(131, 166, 204);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        input[type="text"],
+        textarea,
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Page</h1>
+        <div class="user-info">
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Nickname:</strong> {{ user.nickname }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Major:</strong> {{ user.major }}</p>
+            <p><strong>Phone number:</strong> {{ user.phone_number }}</p>
+        </div>
+        {% if mypage %}
+            <div class="mypage-info">
+                <p><strong>Introduction:</strong> {{ mypage.introduction }}</p>
+                <p><strong>MBTI:</strong> {{ mypage.mbti }}</p>
+                <p><strong>Hobby:</strong> {{ mypage.hobby }}</p>
+                <p><strong>Favorite Foods:</strong> {{ mypage.favorite_foods }}</p>
+            </div>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-fields">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>

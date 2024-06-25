@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .guestbook-entry {
+            background-color: #f1f1f1;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .guestbook-entry h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .guestbook-entry p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+        .guestbook-entry .username {
+            font-weight: bold;
+            font-size: 16px;
+            color: #007bff;
+        }
+        .guestbook-entry .message {
+            font-size: 15px;
+            color: #555;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .guestbook-entry .upload-time {
+            font-size: 12px;
+            color: #999;
+            text-align: right;
+        }
+        .write-button {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .write-button button {
+            background-color: rgb(131, 166, 204);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .write-button button:hover {
+            background-color: #0056b3;
+        }
+        .delete-button {
+            background-color: #d78e96;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            float: right;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Guest Book</h1>
+        <div class="write-button">
+            <a href="{% url 'guestbookpost' %}">
+                <button type="button">Write</button>
+            </a>
+        </div>
+        <div>
+            {% for guestBook in guestBooks %}
+                <div class="guestbook-entry">
+                    <h3 class="username">{{ guestBook.author.username }}</h3>
+                    <p class="message">{{ guestBook.message }}</p>
+                    <p class="upload-time">Upload time: {{ guestBook.write_time|date:"Y-m-d H:i:s" }}</p>
+                    <form action="{% url 'guestbookdelete' guestBook.pk %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

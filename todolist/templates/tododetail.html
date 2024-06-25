@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2, p {
+            text-align: center;
+        }
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* 버튼 사이의 간격 */
+            margin-top: 20px;
+        }
+        button {
+            background-color: rgb(131, 166, 204);
+            color: #fff;
+            border: none;
+            padding: 5px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        button a {
+            color: #fff;
+            text-decoration: none;
+        }a
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>{{ todolist.title }}</h2>
+        <p>{{ todolist.content }}</p>
+        <br>
+        <div class="button-row">
+            <button><a href="{% url 'todolist' %}">TO-DO LIST 목록으로</a></button>
+            <button><a href="{% url 'tododonelist' %}">TO-DO LIST 완료 목록으로</a></button>
+        </div>
+    </div>
+</body>
+</html>
