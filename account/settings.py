@@ -136,4 +136,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'signup/static'),
     os.path.join(BASE_DIR, 'guestbook/static'),
     os.path.join(BASE_DIR, 'todolist/static'),
+    os.path.join(BASE_DIR, 'post/static'),
 ]
