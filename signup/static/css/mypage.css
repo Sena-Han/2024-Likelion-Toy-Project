@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative; /* 홈 버튼을 절대 위치로 배치하기 위해 추가 */
+}
+h1 {
+    text-align: center;
+}
+.home-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.user-info, .mypage-info {
+    margin-top: 30px;
+}
+.user-info p, .mypage-info p {
+    margin-bottom: 10px;
+}
+form {
+    text-align: center;
+}
+form .form-fields {
+    margin-top: 20px;
+    text-align: left;
+}
+form .form-fields p {
+    margin-bottom: 10px;
+}
+.submit-button {
+    background-color: rgb(131, 166, 204);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.submit-button:hover {
+    background-color: #0056b3;
+}
+input[type="text"],
+textarea,
+input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}

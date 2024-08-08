@@ -4,45 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            text-align: center;
-        }
-        form {
-            margin-top: 30px;
-            text-align: center;
-        }
-        form p {
-            text-align: left; /* 입력 필드들을 왼쪽 정렬 */
-            margin-bottom: 10px; /* 간격 조정 */
-        }
-        form button {
-            background-color: rgb(131, 166, 204);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        form button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 </head>
 <body>
     <div class="container">
